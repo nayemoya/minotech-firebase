@@ -85,4 +85,36 @@ export class NavegacionComponent implements OnInit{
       console.log('datos ->', res)
     })
   }
+
+  buscar() {
+    // Elimina los espacios en blanco al inicio y al final del término de búsqueda
+    const busqueda = this.terminoBusqueda.trim().toLowerCase();
+
+    // Redirige a la página correspondiente según el término de búsqueda
+    switch (busqueda) {
+      case 'inicio':
+        this.router.navigate(['/home']);
+        break;
+      case 'cursos':
+        this.router.navigate(['/cursos']);
+        break;
+      case 'crear curso':
+        this.router.navigate(['/agregar-curso']);
+        break;
+      case 'iniciar sesión':
+        this.router.navigate(['/login']);
+        break;
+      case 'registro':
+        this.router.navigate(['/registro']);
+        break;
+      case 'cerrar sesión':
+        this.router.navigate(['/login']); // Otra opción sería redirigir al componente de cerrar sesión
+        break;
+      default:
+        // Si el término de búsqueda no coincide con ninguna página conocida, 
+        // puedes mostrar un mensaje de error o realizar otra acción
+        console.log('No se encontró ninguna página para el término de búsqueda ingresado.');
+        break;
+    }
+  }
 }
