@@ -122,6 +122,9 @@ export class NavegacionComponent implements OnInit{
       case 'cerrar sesión':
         this.router.navigate(['/login']); // Otra opción sería redirigir al componente de cerrar sesión
         break;
+      case 'mapa del sitio':
+        this.router.navigate(['/mapa-sitio']);
+        break;
       default:
         // Si el término de búsqueda no coincide con ninguna página conocida, 
         // puedes mostrar un mensaje de error o realizar otra acción

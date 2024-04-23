@@ -16,11 +16,17 @@ import { CursosService } from './cursos.service';
 })
 export class UsuariosService {
   isUserLoggedIn: boolean = false;
+  adminUid: string = 'TIdGkwFzztT66rxgnNNCd2QUPRj1'; // UID del administrador
 
   constructor(private auth: Auth, private cursos: CursosService) {
-
+    
    
    }
+
+   // Método para verificar si el usuario es administrador
+  isUserAdmin(uid: string): boolean {
+    return uid === this.adminUid;
+  }
 
   async registro(datosU: Usuario) {
     const userCredential = await createUserWithEmailAndPassword(this.auth, datosU.email, datosU.password);

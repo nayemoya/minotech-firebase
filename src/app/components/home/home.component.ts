@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit{
   ngAfterViewInit() {
 
   }
+  
   // private initSwiper() {
   //   new Swiper(".swiper-container", {
   //     effect: "coverflow",

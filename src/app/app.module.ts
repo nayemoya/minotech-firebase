@@ -22,7 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterPipe } from 'src/pipes/filter.pipe';
 import { PreguntasComponent } from './components/preguntas/preguntas.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { Storage } from '@angular/fire/storage';
+import { getStorage, provideStorage, Storage } from '@angular/fire/storage';
+import { MapaSitioComponent } from './mapa-sitio/mapa-sitio.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { Storage } from '@angular/fire/storage';
     RegistroComponent,
     PaginaErrorComponent,
     PreguntasComponent,
+    MapaSitioComponent,
       //  CursoDetalleComponent,
   ],
   imports: [
@@ -48,9 +50,8 @@ import { Storage } from '@angular/fire/storage';
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
-
     NgbModule,
-    
+    provideStorage(()=>getStorage())    
   ],
   providers: [FilterPipe],
   bootstrap: [AppComponent],

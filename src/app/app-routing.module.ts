@@ -10,6 +10,7 @@ import { PreguntasComponent } from './components/preguntas/preguntas.component';
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 import { map } from 'rxjs/operators';
 import { canActivate } from '@angular/fire/compat/auth-guard';
+import { MapaSitioComponent } from './mapa-sitio/mapa-sitio.component';
 
 const uidAdmin = 'TIdGkwFzztT66rxgnNNCd2QUPRj1';
 const onlyAdmin =  () => map( (user: any) => !!user && user.uid === uidAdmin );
@@ -17,11 +18,12 @@ const onlyAdmin =  () => map( (user: any) => !!user && user.uid === uidAdmin );
 const routes: Routes = [
   {path:'',redirectTo:'/home',pathMatch:'full'},
   {path:'home',component:HomeComponent},
-  {path:'agregar-curso',component:AgregarCursoComponent, ...canActivate(onlyAdmin)},
+  {path:'agregar-curso',component:AgregarCursoComponent, ...canActivate(onlyAdmin)}, // se supone solo al admin puede verlo
   {path:'cursos',component:CursosComponent}, //, canActivate: [AngularFireAuthGuard]
   {path:'registro',component:RegistroComponent},
   {path: 'login', component: LoginComponent, pathMatch: "full" },
   {path: 'preguntas', component: PreguntasComponent},
+  { path: 'mapa-sitio', component: MapaSitioComponent },
  // { path: 'cursos/:_id', component: CursoDetalleComponent },
   { path: '**', component:PaginaErrorComponent }
   
